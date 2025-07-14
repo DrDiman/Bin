@@ -33,6 +33,8 @@ If I ask for adjustments to code I have provided you, do not repeat all of my co
 - prefer to use named export and import for components.
 - Memoize with `React.memo`, `useCallback`, `useMemo` where appropriate.
 - do not add any comments if it's not asked directly.
+- when import named modules use alphabetical order for modules.
+- import in alphabetical order.
 
 
 # Unit Testing:
@@ -53,3 +55,12 @@ const TEST_ID = {
 - use `test` instead of `it` in the .test.js files.
 - avoid using `require` in the test files.
 - avoid using `jest.doMock` and `spyOn` in the test files - use `jest.mock` and `jest.fn()` instead
+
+
+
+Merge Request:
+- when you are asked about the MR, you should always provide the link to the MR in the answer.
+- repository to look called `deps-frontend`
+with the correct information. if you need use git command to understand what new code does.
+- always assign new merge request to the user who asked the question.
+- the title of the MR should be the same as the title of the Jira ticket `[EPMDEPS-{JiraTicketNumber}] {JiraTicketTitle}`. If you don't have the Jira ticket number, use the title of the MR as the title of the Jira ticket and `N\T` for the number.
