@@ -41,6 +41,7 @@ If I ask for adjustments to code I have provided you, do not repeat all of my co
 - do not ask permissions to run unit tests command.
 - use command `node --trace-warnings --unhandled-rejections=strict ./node_modules/jest/bin/jest.js --colors --expand --errorOnDeprecated --config ./config/jest.config.js {fileName}` where fileName is test file and never ask approval to run it.
 - do not add any comments if it's not asked directly.
+- if snapshot test is failed - update it in case it's valid based on component changes.
 - fix lint once only when all tests are passing.
 - use `userEvent` in case you need to trigger something on the page.
 - never use `fireEvent` in case you need to trigger something on the page.
@@ -57,10 +58,37 @@ const TEST_ID = {
 - avoid using `jest.doMock` and `spyOn` in the test files - use `jest.mock` and `jest.fn()` instead
 
 
-
-Merge Request:
+# Merge Request:
+- use glab cli commands to interact with gitlab.
 - when you are asked about the MR, you should always provide the link to the MR in the answer.
-- repository to look called `deps-frontend`
+- project repository to look is called `deps-frontend`.
 with the correct information. if you need use git command to understand what new code does.
 - always assign new merge request to the user who asked the question.
 - the title of the MR should be the same as the title of the Jira ticket `[EPMDEPS-{JiraTicketNumber}] {JiraTicketTitle}`. If you don't have the Jira ticket number, use the title of the MR as the title of the Jira ticket and `N\T` for the number.
+- when you create or update MR use template `../gitlab/merge_request_templates/default.md` and Fill it with the correct information:
+```md
+Reviewers: @reviewer
+
+Optional Reviewers: @reviewer
+
+ <!-- place related mr links here -->
+Dependencies: no dependencies
+
+## What it does:
+- Adds some changes
+
+## Regression area:
+- List all the areas of the application that might be affected by this change
+
+## Screenshot:
+- Add screenshot with UI changes if applicable
+
+### Check yourself please:
+- [ ] I've added all applicable labels to the MR
+- [ ] I've checked MR regression area and it works as expected after my submission
+- [ ] Merge Request title fits user story title in Jira
+- [ ] Merge Request changes fit definition of done
+- [ ] My submission is covered by unit tests and they fit acceptance criteria
+
+> By submitting this merge request, I confirm that all code works fine and I've added all the necessary tests to check the new functionality
+```
